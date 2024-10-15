@@ -2,6 +2,8 @@ import Head from "next/head";
 import Image from "next/image";
 import localFont from "next/font/local";
 import styles from "@/styles/Home.module.css";
+import React, { useState, useEffect } from 'react';
+import Link from 'next/link'; 
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -15,6 +17,20 @@ const geistMono = localFont({
 });
 
 export default function Home() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setCount(prevCount => prevCount + window.scrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <>
       <Head>
@@ -23,6 +39,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
       <div
         className={`${styles.page} ${geistSans.variable} ${geistMono.variable}`}
       >
@@ -40,6 +57,50 @@ export default function Home() {
               Get started by editing <code>pages/index.js</code>.
             </li>
             <li>Save and see your changes instantly.</li>
+
+            {/* Aquí integramos la funcionalidad del contador */}
+            <li>
+              <p>You clicked {count} times</p>
+              <button onClick={() => setCount(count + 1)}>
+                Click me
+              </button>
+              <h1>Hola</h1>
+            <h1>Hola</h1>
+            <h1>Hola</h1>
+            <h1>Hola</h1>
+            <h1>Hola</h1>
+            <h1>Hola</h1>
+            <h1>Hola</h1>
+            <h1>Hola</h1>
+            <h1>Hola</h1>
+            <h1>Hola</h1>
+            <h1>Hola</h1>
+            <h1>Hola</h1>
+            <h1>Hola</h1>
+            <h1>Hola</h1>
+            <h1>Hola</h1>
+            <h1>Hola</h1>
+            <h1>Hola</h1>
+            <h1>Hola</h1>
+            <h1>Hola</h1>
+            <h1>Hola</h1>
+            <h1>Hola</h1>
+            <h1>Hola</h1>
+            <h1>Hola</h1>
+            <h1>Hola</h1>
+            <h1>Hola</h1>
+            <h1>Hola</h1>
+            <h1>Hola</h1>
+            <h1>Hola</h1>
+            <h1>Hola</h1>
+            <h1>Hola</h1>
+            <h1>Hola</h1>
+            <h1>Hola</h1>
+            <h1>Hola</h1>
+            <h1>Hola</h1>
+            <h1>Hola</h1>
+            
+            </li>
           </ol>
 
           <div className={styles.ctas}>
@@ -68,6 +129,7 @@ export default function Home() {
             </a>
           </div>
         </main>
+        
         <footer className={styles.footer}>
           <a
             href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
@@ -110,9 +172,15 @@ export default function Home() {
               height={16}
             />
             Go to nextjs.org →
+            
           </a>
         </footer>
       </div>
+      <div style={{ marginTop: '20px', textAlign: 'center' }}>
+            <Link href="/page2">
+              <button style={{ fontSize: '1rem', padding: '1rem' }}>Cambiar Página</button>
+            </Link>
+          </div>
     </>
   );
 }
